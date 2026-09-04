@@ -48,7 +48,9 @@ def clasificar_imagen(image_path: str, processor, model):
 
 def main(imgs: list[str], model_path: str):
     processor, model = cargar_modelo(model_path)
-    for image in imgs:
+    for i, image in enumerate(imgs):
+        if i>13:
+            print("CAPTURAS DE PANTALLA (IMAGENES FALSAS)")
         clasificar_imagen(image, processor, model)
 
 
@@ -69,5 +71,11 @@ if __name__ == "__main__":
         "./imagenes/barba-falsa-redimensionada.jpg",
         "./imagenes/brazo-raro.png",
         "./imagenes/tyler-modificado-redimensionada2.jpg",
+        # CAPTURAS DE PANTALLA
+        "./imagenes/capturas/bigote.png",
+        "./imagenes/capturas/barba.png",
+        "./imagenes/capturas/bryan1-cara.png",
+        "./imagenes/capturas/bryan2-cara.png",
+        "./imagenes/capturas/tyler.png",
     ]
     main(images, MODEL_PATH)
