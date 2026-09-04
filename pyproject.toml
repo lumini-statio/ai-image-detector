@@ -1,0 +1,19 @@
+[project]
+name = "detector-de-ia"
+version = "0.1.0"
+description = "AI fotorealistic images detector"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pillow>=12.3.0",
+    "transformers==5.16",
+    "torch==2.13",
+    "torchvision==0.28.0"
+]
+
+[project.scripts]
+detector-de-ia = ".:main"
+
+[build-system]
+requires = ["uv_build>=0.12.9,<0.13.0",]
+build-backend = "uv_build"
