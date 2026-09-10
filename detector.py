@@ -145,7 +145,10 @@ def main(dataset_dir: str, model_path: str, output_json: str, guardar_detalle: b
         if i % CHECKPOINT_CADA == 0:
             stats_parcial = calcular_resumen(contadores, i, total_encontradas)
             guardar_resultados(output_json, stats_parcial, detalle, parcial=True)
-            print(f"  💾 Checkpoint guardado en '{output_json}'\n")
+            print(f"Checkpoint guardado en '{output_json}'\n")
+            
+            if i < total_encontradas:
+                time.sleep(5)
 
     stats_final = calcular_resumen(contadores, len(imagenes), total_encontradas)
     guardar_resultados(output_json, stats_final, detalle, parcial=False)
@@ -158,7 +161,7 @@ def main(dataset_dir: str, model_path: str, output_json: str, guardar_detalle: b
 
 if __name__ == "__main__":
     MODEL_PATH = "./src/detect-model"
-    DATASET_DIR = "E:/dataset_megaface/megaface"
-    OUTPUT_JSON = "./resultados_analisis_megaface.json"
+    DATASET_DIR = "/data/megaface"
+    OUTPUT_JSON = "./resultados_analisis.json"
 
     main(DATASET_DIR, model_path=MODEL_PATH, output_json=OUTPUT_JSON, guardar_detalle=True)
